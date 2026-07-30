@@ -1,8 +1,8 @@
-import { commits } from "@/data/turma";
+import { loadCommits } from "@/data/turma";
 import CommitNode from "./CommitNode";
 
-export default function GraphTimeline() {
-  const ordered = [...commits].sort((a, b) => (a.data > b.data ? -1 : 1));
+export default async function GraphTimeline() {
+  const ordered = await loadCommits();
 
   return (
     <section id="mural" className="mx-auto max-w-3xl px-6 py-20 sm:px-10">

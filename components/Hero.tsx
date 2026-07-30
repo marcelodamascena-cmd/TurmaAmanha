@@ -1,6 +1,7 @@
-import { commits } from "@/data/turma";
+import { loadCommits } from "@/data/turma";
 
-export default function Hero() {
+export default async function Hero() {
+  const commits = await loadCommits();
   const total = commits.length;
 
   return (
