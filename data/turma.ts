@@ -33,14 +33,14 @@ export type Commit = {
   data: string;
 };
 
-function extractCommitsArray(source: string): string {
-  const start = source.indexOf("export const commits");
+export function extractCommitsArray(source: string): string {
+  const match = source.match(/export\s+const\s+commits\b[^=]*=\s*\[/s);
 
-  if (start === -1) {
+  if (!match) {
     throw new Error("Nenhum array 'commits' encontrado no arquivo do aluno.");
   }
 
-  const arrayStart = source.indexOf("[", start);
+  const arrayStart = match.index! + match[0].lastIndexOf("[");
 
   if (arrayStart === -1) {
     throw new Error("O arquivo do aluno não contém um array 'commits' válido.");
