@@ -34,7 +34,8 @@ export type Commit = {
 };
 
 export function extractCommitsArray(source: string): string {
-  const match = source.match(/export\s+const\s+commits\b[^=]*=\s*\[/s);
+  // Use a regex that is compatible with older TS targets (avoid `/s` flag)
+  const match = source.match(/export\s+const\s+commits\b[^=]*=\s*\[/);
 
   if (!match) {
     throw new Error("Nenhum array 'commits' encontrado no arquivo do aluno.");
