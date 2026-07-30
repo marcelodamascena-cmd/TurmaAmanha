@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b1220;
+  --color-ink-soft: #101a2e;
+  --color-ink-card: #131f38;
+  --color-line: #253550;
+  --color-fog: #e7ecf5;
+  --color-muted: #8b96ac;
+  --color-merge: #7fe0b0;
+  --color-merge-dim: #345347;
+  --color-pending: #f2b15c;
+  --color-coral: #e88a7d;
+  --font-mono-display: ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Code",
+    Menlo, Consolas, monospace;
+  --font-sans-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b1220;
+  color: #e7ecf5;
+  font-family: var(--font-sans-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.diff-plus::before {
+  content: "+ ";
+  color: #7fe0b0;
+}
+
+.diff-caret {
+  color: #7fe0b0;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(127, 224, 176, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(127, 224, 176, 0);
+  }
+}
+
+.pulse-node {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1.1s step-start infinite;
+}
